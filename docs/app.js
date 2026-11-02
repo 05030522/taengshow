@@ -19,11 +19,11 @@ function updateChrome(){
 
  $('#wishCount').textContent=data.items.filter(x=>!x.done).length;$('#doneCount').textContent=data.items.filter(x=>x.done).length;$('#tasteCount').textContent=data.tastes.length;
  document.querySelectorAll('nav button').forEach(b=>{b.classList.toggle('active',b.dataset.view===view);b.setAttribute('aria-current',b.dataset.view===view?'page':'false')});
- $('#workspaceToolbar').hidden=view==='map';$('#sort').hidden=view==='taste';$('.viewSwitch').hidden=view==='taste';$('#add').style.visibility=view==='map'?'hidden':'';$('#resultCount').hidden=view==='map';
+ $('#workspaceToolbar').hidden=view==='map';$('#sort').hidden=view==='taste';$('.viewSwitch').hidden=view==='taste';$('.displayOptions').hidden=view==='taste';$('#add').style.visibility=view==='map'?'hidden':'';$('#resultCount').hidden=view==='map';
 }
 function render(){
  updateChrome();$('#breadcrumb').textContent={wish:'WISHLIST',done:'MEMORIES',taste:'LITTLE THINGS'}[view];
- $('#heading').innerHTML={wish:'다음 페이지의 우리<small>언젠가를, 하나씩 함께로.</small>',done:'함께한 날들<small>좋았던 순간을 오래 간직해요.</small>',taste:'너를 알아가는 중<small>작은 취향 하나도, 소중하게.</small>'}[view];
+ $('#heading').innerHTML={wish:'우리, 다음엔 여기<small>생각만 해도 좋은, 너와의 약속.</small>',done:'다시 꺼내 보는 우리<small>지나간 하루가, 오래 남을 사랑이 되도록.</small>',taste:'너라서 기억하는 것들<small>네가 좋아하는 걸, 나도 좋아하고 싶어서.</small>'}[view];
  $('#add').textContent=view==='taste'?'＋ 취향 담기':view==='done'?'＋ 추억 담기':'＋ 새로 담기';
  const matches=x=>(x.title+' '+(x.note||'')).toLocaleLowerCase().includes(search.toLocaleLowerCase());
  $('#filters').innerHTML=view==='taste'?'':['전체',...Object.keys(palettes)].map(c=>`<button class="${c===filter?'active':''}" data-filter="${c}" aria-pressed="${c===filter}">${c}</button>`).join('');
