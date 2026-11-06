@@ -1,0 +1,1 @@
+export const metadata={title:'탱쇼',description:'민탱탱과 권쇼쇼의 작은 기록'};export default function Layout({children}:{children:React.ReactNode}){return <html lang="ko"><body>{children}</body></html>}
